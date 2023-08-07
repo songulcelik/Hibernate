@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-configuration PUBLIC
+
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <!--
+    databaselerle islem yapmamiz icin session factoryi kullanicaz
+    -->
+
+    <session-factory>
+        <!-- -->
+
+        <property name = "hibernate.connection.driver_class">org.postgresql.Driver</property>
+
+        <property name="connection.url">jdbc:postgresql://localhost:5432/hibernate_db</property>
+
+        <property name="connection.username">dev_user</property>
+
+        <property name="connection.password">password</property>
+
+
+        <property name = "hibernate.dialect">org.hibernate.dialect.PostgreSQL9Dialect</property>
+        <!-- hangi sql dilini kullanicaz. tum databaselerin lehceleri icin yapiyoruz. databasedeki crud operasyonlari icin
+         mongo iliskisel olmadigi icin lehceye yazamayiz-->
+
+        <!-- ddl.auto create ise uygulama her çalıştırıldığında schema yeniden oluşturulur.
+             update: schema silinmez değişiklik var ise güncellenir.
+             create-drop: schemanızı uygulama çalıştırıldığında oluşturuyor, sonlandığında schema siliniyor.
+             validate: schema'yı validate yapıyor.
+             none: yukarıdakilerin hiç birisini yapmıyor.
+         -->
+
+        <property name="hbm2ddl.auto">update</property>
+        <!-- schema ile ilgili ozellikler. ddl.auto update ozellik create oldugunda tablo var ise her calistiginda silinir tekrar olusturulur
+        create-drop oldugunda uygulama calistiginda tabloyu olusturuyor bittiginde siliyor
+        test etme yada development asamasinda create veya create drop kullanilabilir
+        urun canliya ciktinda ddl-auto ozelligi update olmali
+-->
+        <property name="show_sql">true</property>
+        <!--kullanmis oldugun sql sorgularini goster goster diyoruz -->
+
+        <property name="format_sql">true</property>
+        <!-- guzel bir formatta sunulmasi icin
+         bu son ikisi sart degil ama uygulama gelistirmemize yariyor
+         -->
+
+
+    </session-factory>
+
+</hibernate-configuration>
