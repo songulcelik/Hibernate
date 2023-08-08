@@ -26,6 +26,7 @@ public class RunnerFetch01 {
         Student01 student2= session.get(Student01.class,1002);//select*from t_student01 where std_id_1001
         Student01 student3= session.get(Student01.class,1003);//select*from t_student01 where std_id_1001
 
+
         System.out.println("-------------");
         System.out.println(student1);
         System.out.println(student2);
@@ -33,17 +34,37 @@ public class RunnerFetch01 {
 
 
         //2.yol:sql sorgusunu kendimiz yazarak
-        System.out.println("---------SQL QUERY----------");
+//        System.out.println("---------SQL QUERY----------");
+//        String sql="select*from t_student01";
+//        List<Object[]> resultList1=session.createSQLQuery(sql).getResultList();
+//        resultList1.
+//                stream().
+//                forEach(t-> System.out.println(Arrays.toString(t)));
 
-        String sql= "select*from t_student01";
+
+        String sql= "select *from t_student01";
         List<Object[]> resultList=session.createSQLQuery(sql).getResultList();
         for (Object[] objects:resultList){
             System.out.println(Arrays.toString(objects));
         }
 
+
         //3.yol:HQL:hibernate query language. java bilesenlerimizi kullanarak sorgu yazabiliriz
         System.out.println("--------------HQL QUERY----------");
         String hql="from Student01";
+//        List<Student01> list=session.createQuery(hql,Student01.class).getResultList();
+//        for (Student01 w:list){
+//            System.out.println(w);
+//        }
+
+
+
+
+
+
+
+
+
         List<Student01> studentList=session.createQuery(hql, Student01.class).getResultList();
         for (Student01 student: studentList){
             System.out.println(student);
@@ -63,6 +84,12 @@ public class RunnerFetch01 {
         System.out.println(student01);
 
         //yukaridaki hql sorgusunda ALIAS kullanalim, ismi songul olanin sadece id ve name ini yazin
+
+//        String  hq="select s.id, s.name from Student01 s where s.name='Songul'";
+//        Object[] sS= (Object[]) session.createQuery(hq).uniqueResult();
+//
+
+
         String hql3="select s.id, s.name from Student01 s where s.name='Songul'";
         Object[] studentSongul= (Object[]) session.createQuery(hql3).uniqueResult();//geriye [id ve name] gelcek
         System.out.println(Arrays.toString(studentSongul));

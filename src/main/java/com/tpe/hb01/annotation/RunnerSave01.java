@@ -26,7 +26,6 @@ public class RunnerSave01 {
         student3.setGrade(95);
         student3.setAge(30);
 
-
         //hibernate.cfg.xml dosyasindaki bilgileri ve Student01 classindaki anatosyanlara gore konfigurasyon yapilit.
         //configure() ve addAnotationla() kullanarak yapilandirma ayarlarini gerceklestir diyoruz
         Configuration configuration=new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Student01.class);
