@@ -16,7 +16,7 @@ public class RunnerSave03 {
         Diary diary1=new Diary();
         diary1.setId(11);
         diary1.setName("Yahya's diary");
-        diary1.setStudent(student1);
+        diary1.setStudent(student1);//1001
 
         Diary diary2=new Diary();
         diary2.setId(12);

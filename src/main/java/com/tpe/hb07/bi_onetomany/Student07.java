@@ -1,29 +1,34 @@
-package com.tpe.hb06.onetomany_uni;
+package com.tpe.hb07.bi_onetomany;
+
+import com.tpe.hb06.onetomany_uni.Book06;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "t_student06")
-public class Student06 {//one taraf
+@Table(name = "t_student07")
+public class Student07 {//one taraf--parent
     @Id
     private int id;
     private String name;
     private int grade;
-    @OneToMany//fk sutununu biz bookda olusturmak istiyoruz. normalde anotasyonu kullandigimiz yerde olusuyordu
-                //fk ekleyemeyecegi icin 3.tablo olusturur buna da jointable deniyır(std_id-->book_id)
-   @JoinColumn(name = "student_id")//kullanildiginda fk sutunu diger (book)da olusturur aksi halde yukaridaki join table olusur
+    @OneToMany(mappedBy = "student", /*cascade = CascadeType.REMOVE*/ orphanRemoval = true)//burada fk olusmayacagi icn jointable olusturur
+    //mapped by ile diyoruz booklistteki degerleri studenta ekle
+    //iliski kuruyorum ama iliski burdan yonetilmicek
+    //cascade = CascadeType.REMOVE ilk kitaplari siliyor sonra studenti siliyor
 
-    private List<Book06> bookList= new ArrayList<>();//best practice set kullanmak. uniq olursa. listte tekrarli ekleyebiliriz
-                                                        //many
-    public Student06(int id, String name, int grade) {
+    //orphanRemoval = true sadece onetomant ye ozel.parenttaki veriyi siliyor. ilk iliskili olan childlari siliyor sonra
+    //parenti siliyor
+
+    private List<Book07> bookList= new ArrayList<>();//child. parenti silmek icin childa cascede
+    public Student07(int id, String name, int grade) {
         this.id = id;
         this.name = name;
         this.grade = grade;
     }
 
-    public Student06() {
+    public Student07() {
     }
 
     public int getId() {
@@ -50,17 +55,17 @@ public class Student06 {//one taraf
         this.grade = grade;
     }
 
-    public List<Book06> getBookList() {
+    public List<Book07> getBookList() {
         return bookList;
     }
 
-    public void setBookList(List<Book06> bookList) {
+    public void setBookList(List<Book07> bookList) {
         this.bookList = bookList;
     }
 
     @Override
     public String toString() {
-        return "Student06{" +
+        return "Student07{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", grade=" + grade +

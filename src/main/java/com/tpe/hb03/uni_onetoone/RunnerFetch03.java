@@ -34,6 +34,8 @@ public class RunnerFetch03 {
 
         //Diaryden studenta ulasabiliyoruz. studenttan diarye ulasamiyoruz
 
+//        RECAP ÖDEV: Uni-directional ilişki olan Student03 ve Diary classlarında id si 1001 olan studentin diaryi bilgilerini getiren bir SQL ve HQL sorgusu yazınız.
+//    .RunnerFetch03  classı kullanılabilir.
         tx.commit();
         session.close();
         sf.close();

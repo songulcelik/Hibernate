@@ -12,7 +12,7 @@
     -->
 
     <session-factory>
-        <!-- -->
+        <!--session factory: hibernate de Database ye baglanıp databasede ki işlemlerin yönetilmesini sağlayan interface dir -->
 
         <property name = "hibernate.connection.driver_class">org.postgresql.Driver</property>
 
@@ -48,6 +48,16 @@
          bu son ikisi sart degil ama uygulama gelistirmemize yariyor
          -->
 
+
+        <!--        <mapping class="com.tpe.hb05.manytoone_uni.Student05"/>-->
+        <!--        <mapping class="com.tpe.hb05.manytoone_uni.University"/>-->
+        <!--        <mapping package="com.tpe.domain"/>-->
+
+        <property name="hibernate.cache.use_second_level_cache">true</property>
+        <property name="hibernate.cache.use_query_cache">true</property>
+
+        <property name="hibernate.cache.region.factory_class">org.hibernate.cache.jcache.internal.JCacheRegionFactory</property>
+        <property name="hibernate.javax.cache.provider">org.ehcache.jsr107.EhcacheCachingProvider</property>
 
     </session-factory>
 

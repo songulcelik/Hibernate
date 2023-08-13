@@ -1,2 +1,69 @@
-package com.tpe.hb09.fetchtypes;public class Student09 {
+package com.tpe.hb09.fetchtypes;
+
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+public class Student09 {
+    @Id
+    private  int id;
+    private String name;
+    private int grade;
+    @OneToMany(mappedBy = "student"/*fetch = FetchType.EAGER*/)//onetomany oldugu icin lazy davranir
+    private List<Book09> bookList= new ArrayList<>();
+
+    public Student09() {
+    }
+
+    public Student09(int id, String name, int grade) {
+        this.id = id;
+        this.name = name;
+        this.grade = grade;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getGrade() {
+        return grade;
+    }
+
+    public void setGrade(int grade) {
+        this.grade = grade;
+    }
+
+    public List<Book09> getBookList() {
+        return bookList;
+    }
+
+    public void setBookList(List<Book09> bookList) {
+        this.bookList = bookList;
+    }
+
+    @Override
+    public String toString() {
+        return "Student09{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", grade=" + grade +
+                '}';
+    }
+
 }

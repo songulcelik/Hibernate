@@ -42,6 +42,9 @@ public class RunnerSave04 {
         //bi_directionalda: set islemini kesinlikle iliski sahibi olan yani fk sutunu icericek olan classta set
         //yapmaniz gerekiyor. bu yeterli
         //iliski sahibi diary
+      // bi_directionalda(çify yönlü ilişki kuruldugunda):kesinlikle ilişki sahibi tarafında diğer obje set edilmeli
+//yani Diary tarafında set etmeliyiz
+//iliski tarafı olan tarafta set yapılmaz ise sadece diger tarafta yapılırsa FK sütunu null degerler alır
 
         Configuration config=new Configuration().configure().
                 addAnnotatedClass(Student04.class).
@@ -60,6 +63,8 @@ public class RunnerSave04 {
         session.persist(diary2);
         session.persist(diary3);
 
+        System.out.println("studentin diarysi: "+ student1.getDiary());
+        System.out.println("gunluugn sahibi: "+ diary1.getStudent());
 
         tx.commit();
         session.close();

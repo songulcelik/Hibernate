@@ -1,20 +1,34 @@
-package com.tpe.hb06.onetomany_uni;
+package com.tpe.hb07.bi_onetomany;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
-public class Book06 {
+public class Book07 {
     @Id
     private int id;
     private String name;
 
-    public Book06(int id, String name) {
+    @ManyToOne//mapped by yok burda sebebi ise kullanim mantik disi
+    //@JoinColumn(name = "std_id") opsiyonel. kullanilmasa da diger classda mapped by old icin fk burada olusur
+    private Student07 student;
+
+    public Book07(int id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public Book06() {
+    public Book07() {
+    }
+
+    public Student07 getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student07 student) {
+        this.student = student;
     }
 
     public int getId() {
@@ -35,7 +49,7 @@ public class Book06 {
 
     @Override
     public String toString() {
-        return "Book06{" +
+        return "Book07{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';
